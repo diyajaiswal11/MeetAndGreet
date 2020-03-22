@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UserLoginForm, User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login , logout
 from django.http import HttpResponseBadRequest
+
+
 def home(request):
     context={}
     return render(request,'home.html',context)
 
 
 def register(request):
-    form = CreateUserForm()
-    context = {'form':form }
+    """user=request.user
+    if user.is_authenticated:
+        return redirect('home') """
     if request.method == 'POST':
         form=CreateUserForm(request.POST)
         if form.is_valid():
@@ -20,10 +23,37 @@ def register(request):
             user=form.cleaned_data.get('username')
             messages.success(request,'Account was created for '+ user)
             return redirect('loginpage')
-            
+    else:
+        form=CreateUserForm()    
+    context = {'form':form }    
     return render(request,'register.html',context)
 
 def loginpage(request):
+    user = request.user
+    """if user.is_authenticated:
+        return redirect('home') """
+    next = request.GET.get('next')
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        
+        login(request, user)
+        if next:
+            return redirect(next)
+        return redirect('home')
+    
+    context = {
+        'form': form,
+    }
+    return render(request, 'loginpage.html', context)
+
+
+
+
+
+"""def loginpage(request):
     if request.method == "POST":
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -35,4 +65,4 @@ def loginpage(request):
             
     context={}
     return render(request,'loginpage.html',context) 
-
+"""

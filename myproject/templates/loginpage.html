@@ -32,18 +32,32 @@
 					<span class="login100-form-title p-b-55">
 						Login
                     </span>
-                    <form method=="POST" action="">
+                    <form method="POST" action="" class="login-form">
                         {% csrf_token %}
+        				{% if form.errors %}
+        				{% for field in form %}
+        				{% for error in field.errors %}
+           					<div class="alert alert-danger">
+								   <strong>{{ error|escape }}</strong>
+           					</div>
+        				{% endfor %}
+   						{% endfor %}
+    					{% for error in form.non_field_errors %}
+      						<div class="alert alert-danger">
+           						<strong>{{ error|escape }}</strong>
+       						</div>
+   						{% endfor %}
+					{% endif %}
 					<div class="wrap-input100 validate-input m-b-16">
-						<input class="input100" type="text" name="Username" placeholder="Username">
+						{{ form.username }}
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-user"></span>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+					<div class="wrap-input100 validate-input m-b-16">
+						{{ form.password }}
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
@@ -53,7 +67,7 @@
 					
 					
 					<div class="container-login100-form-btn p-t-25">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
                     </div>
