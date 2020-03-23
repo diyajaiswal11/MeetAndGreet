@@ -5,51 +5,57 @@ from .forms import CreateUserForm, UserLoginForm, User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login , logout
 from django.http import HttpResponseBadRequest
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='loginpage')
 def home(request):
     context={}
     return render(request,'home.html',context)
 
 
 def register(request):
-    """user=request.user
+    user=request.user
     if user.is_authenticated:
-        return redirect('home') """
-    if request.method == 'POST':
-        form=CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user=form.cleaned_data.get('username')
-            messages.success(request,'Account was created for '+ user)
-            return redirect('loginpage')
+        return redirect('home') 
     else:
-        form=CreateUserForm()    
-    context = {'form':form }    
-    return render(request,'register.html',context)
+        if request.method == 'POST':
+            form=CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user=form.cleaned_data.get('username')
+                messages.success(request,'Account was created for '+ user)
+                return redirect('loginpage')
+        else:
+            form=CreateUserForm()    
+        context = {'form':form }    
+        return render(request,'register.html',context)
 
 def loginpage(request):
     user = request.user
-    """if user.is_authenticated:
-        return redirect('home') """
-    next = request.GET.get('next')
-    form = UserLoginForm(request.POST or None)
-    if form.is_valid():
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user = authenticate(username=username, password=password)
+    if user.is_authenticated:
+        return redirect('home') 
+    else:
+        next = request.GET.get('next')
+        form = UserLoginForm(request.POST or None)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            
+            login(request, user)
+            if next:
+                return redirect(next)
+            return redirect('home')
         
-        login(request, user)
-        if next:
-            return redirect(next)
-        return redirect('home')
-    
-    context = {
-        'form': form,
-    }
-    return render(request, 'loginpage.html', context)
+        context = {
+            'form': form,
+        }
+        return render(request, 'loginpage.html', context)
 
-
+def logoutpage(request):
+    logout(request)
+    return redirect('front')
 
 
 
