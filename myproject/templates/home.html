@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -26,16 +26,18 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	
     <div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100 p-l-30 p-r-50 p-t-30 p-b-100">
-            <h1>Hello,{{request.user}}!&#128515<h1>
+			
+			<div class="wrap-login100 p-l-15 p-r-50 p-t-15 p-b-100" style="width:1295px; height:590px;">
+            <h1>Hello, {{request.user}}!&#128515<h1>
             
-			<div class="container-login100-form-btn p-t-25" style="float:right;width:46%;">
-				<a class="login100-form-btn" href="{% url 'logoutpage' %}" >
-					Logout
-					</a>
-			</div>
+				<div class="container-login100-form-btn p-l-50 p-r-30 p-t-1 p-b-200" style="float:right;width:14%;">
+					<a class="login100-form-btn" href="{% url 'logoutpage' %}" >
+						Logout
+						</a>
+				</div>
 			<style>a:hover {
 				text-decoration: none;
 			  color: #fff;
@@ -43,7 +45,6 @@
         </div>
     </div>
 </div>
-
 
 
 
