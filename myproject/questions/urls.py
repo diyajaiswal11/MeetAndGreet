@@ -16,8 +16,7 @@ Including another URLconf
 from django.urls import path, include
 from . import views
 urlpatterns = [
-    path('loginpage/',views.loginpage, name='loginpage'),
-    path('logoutpage/',views.logoutpage, name='logoutpage'),
-    path('register/',views.register,name='register'),
+    path('home/',views.home,name='home'),
+    path('question/<int:pk>/',views.answers,name="answers"),
     
 ]

@@ -31,13 +31,24 @@
 		<div class="container-login100">
 			
 			<div class="wrap-login100 p-l-15 p-r-50 p-t-15 p-b-100" style="width:1295px; height:590px;">
-            <h1>Hello, {{request.user}}!&#128515<h1>
-            
-				<div class="container-login100-form-btn p-l-50 p-r-30 p-t-1 p-b-200" style="float:right;width:14%;">
-					<a class="login100-form-btn" href="{% url 'logoutpage' %}" >
+            <h2>Hello, {{request.user}}!&#128515<h2>
+				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
+					<a class="login100-form-btn" href="{% url 'logoutpage' %}"style="background-color:#C0C0C0;" >
 						Logout
 						</a>
 				</div>
+				<br>
+				<H4 style="color: black;">Trending Questions:</H4> 
+				<br>
+				{% for q in que %}
+				<div>
+					<h5>&#10097; <a style="font-size:20px; color:black;" href="{% url 'answers' pk=q.pk %}">{{ q.text }}</a></h5>
+					<h6>
+						<font size="2" color="grey">Asked: {{ q.date_asked }}</font>
+					</h6>
+					<br>
+				</div>
+				{% endfor %}
 			<style>a:hover {
 				text-decoration: none;
 			  color: #fff;

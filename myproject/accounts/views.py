@@ -8,10 +8,7 @@ from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url='loginpage')
-def home(request):
-    context={}
-    return render(request,'home.html',context)
+
 
 
 def register(request):
