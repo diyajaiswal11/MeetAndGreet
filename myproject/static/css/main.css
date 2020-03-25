@@ -382,7 +382,10 @@ iframe {
   color: #d33f8d;
 }
 
-
+.question-form textarea, .question-form input {
+  width: 50%;
+  color:black;
+}
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
