@@ -4,50 +4,46 @@
 <html lang="en">
 <head>
 	<title>Home</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
+<style>
+	.xyz{ 
+	   width: 80%;
+	   border: 1px solid black;
+	   border-radius: 10px;
+	   padding: 10px;
+	   margin-left: 20px;
+	   margin-bottom: 20px;
+	}
+	.topnav {
+		background: linear-gradient(to right, #0250c5, #d43f8d);
+		overflow: hidden;
+	  }
+	</style>
 </head>
 <body>
-	
-    <div class="limiter">
-		<div class="container-login100">
-			
-			<div class="wrap-login100 p-l-15 p-r-50 p-t-15 p-b-100" style="width:1295px; height:590px;">
-            <h2>Hello, {{request.user}}!&#128515<h2>
-				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;height:10px">
+		<div class="topnav">
+            <h2 style="color:white;margin-left: 1em;"><br>Hello, {{request.user}}!&#128515<h2>
+				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-5" style="float:right;width:14%;height:10px">
 					<a class="login100-form-btn" href="{% url 'logoutpage' %}"style="background-color:#C0C0C0;" >
 						Logout
 						</a>
 				</div>
 				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
-					<a class="login100-form-btn" href="{% url 'askquestion' %}"style="background-color:#C0C0C0;" >
-						Ask a Question
+					<a class="login100-form-btn" href="{% url 'addevent' %}"style="background-color:#C0C0C0;" >
+						Add an Event
 						</a>
 				</div>
+			</div>
 				<br>
-				<H4 style="color: black;">Trending Questions:</H4> 
+				<br>
+				<br>
+				<H4 style="color:black;margin-left: 1em;">Trending Events:</H4> 
 
 				<br>
 				{% for q in que %}
-				<div>
+				<div class="xyz">
 					<h5>&#10097; <a style="font-size:20px; color:black;" href="{% url 'answers' pk=q.pk %}">{{ q.text }}<!--<span class="badge badge-success float-right">{{ q.upvotes }} Upvote{{ q.upvotes | pluralize }}</span>--></a></h5>
 					<h6>
 						<font size="2" color="grey">Asked: {{ q.date_asked }}</font>
@@ -65,15 +61,7 @@
 
 
 
-<!--===============================================================================================-->	
-<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'js/main.js' %}"></script>
+
 
 </body>
 </html>

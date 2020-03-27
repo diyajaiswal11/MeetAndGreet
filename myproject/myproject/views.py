@@ -11,3 +11,4 @@ from django.contrib.auth.decorators import login_required
 def front(request):
     context={}
     return render(request,'front.html',context)
+

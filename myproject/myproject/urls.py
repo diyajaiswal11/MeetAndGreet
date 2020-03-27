@@ -21,4 +21,5 @@ urlpatterns = [
     path('',include('accounts.urls')),
     path('',include('questions.urls')),
     path('',views.front,name='front'),
+    #path('home1/',views.home1,name='home1'),
 ]

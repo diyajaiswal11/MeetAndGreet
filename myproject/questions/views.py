@@ -24,7 +24,7 @@ def answers(request,pk):
     return render(request,'answers.html',context)
 
 @login_required(login_url='loginpage')
-def askquestion(request):
+def addevent(request):
     form=QuestionForm(request.POST or None) 
     if request.method=="POST":
         if form.is_valid():
@@ -32,7 +32,7 @@ def askquestion(request):
             que.date_asked=timezone.now()
             que.save()
             return redirect('home') 
-    return render(request,'askquestion.html',{'form':form })
+    return render(request,'addevent.html',{'form':form })
 
 
 

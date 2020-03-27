@@ -18,6 +18,6 @@ from . import views
 urlpatterns = [
     path('home/',views.home,name='home'),
     path('question/<int:pk>/',views.answers,name="answers"),
-    path('askquestion/',views.askquestion,name='askquestion'),
+    path('addevent/',views.addevent,name='addevent'),
     #path('question/<int:pk>/upvote',views.upvotes,name='upvotes'),
 ]
