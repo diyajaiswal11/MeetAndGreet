@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Add Event</title>
+	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
@@ -24,24 +24,17 @@
 </head>
 <body>
     <div class="topnav">	
-        <h2 style="color:white;margin-left: 1em;"><br>Add Event<h2>	
+        <h2 style="color:white;margin-left: 1em;"><br>Hello, {{request.user}}!&#128515<h2>	
                 <div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
 					<a class="login100-form-btn" href="{% url 'home' %}"style="background-color:#C0C0C0;" >
 						Back
 						</a>
+                </div>
+                <div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
+					<a class="login100-form-btn" href="{% url 'editprofile' %}"style="background-color:#C0C0C0;" >
+						Edit Profile
+						</a>
 				</div>
                 <br>
-            </div>
-                <form method="POST" class="question-form">
-                    <br>
-					{% csrf_token %}
-						{{ form.as_p }}
-                    <div class="container-login100-form-btn p-t-25 p-l-56 p-r-56" style="color:black;width:17%;float:center">
-						<button class="login100-form-btn" type="submit" action="{% url 'home' %}">
-							Submit
-						</button>
-                    </div>
-                </form>
-        </div>
 </body>
 </html>

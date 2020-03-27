@@ -8,9 +8,6 @@ from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 
 
-
-
-
 def register(request):
     user=request.user
     if user.is_authenticated:
@@ -54,18 +51,10 @@ def logoutpage(request):
     logout(request)
     return redirect('front')
 
+@login_required(login_url='loginpage')
+def profile(request):
+    return render(request,'profile.html')
 
-
-"""def loginpage(request):
-    if request.method == "POST":
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home') 
-            
-    context={}
-    return render(request,'loginpage.html',context) 
-"""
+@login_required(login_url='loginpage')
+def editprofile(request):
+    return render(request,'editprofile.html')

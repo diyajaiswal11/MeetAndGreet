@@ -17,14 +17,14 @@
 	   margin-bottom: 20px;
 	}
 	.topnav {
-		background: linear-gradient(to right, #0250c5, #d43f8d);
+		background: linear-gradient(to bottom, #0250c5, #d43f8d);
 		overflow: hidden;
 	  }
 	</style>
 </head>
 <body>
 		<div class="topnav">
-            <h2 style="color:white;margin-left: 1em;"><br>Hello, {{request.user}}!&#128515<h2>
+            <h2 style="color:white;margin-left: 1em;"><br>Meet And Greet &#127914<h2>
 				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-5" style="float:right;width:14%;height:10px">
 					<a class="login100-form-btn" href="{% url 'logoutpage' %}"style="background-color:#C0C0C0;" >
 						Logout
@@ -33,6 +33,11 @@
 				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
 					<a class="login100-form-btn" href="{% url 'addevent' %}"style="background-color:#C0C0C0;" >
 						Add an Event
+						</a>
+				</div>
+				<div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
+					<a class="login100-form-btn" href="{% url 'profile' %}"style="background-color:#C0C0C0;" >
+						Profile
 						</a>
 				</div>
 			</div>
@@ -46,7 +51,7 @@
 				<div class="xyz">
 					<h5>&#10097; <a style="font-size:20px; color:black;" href="{% url 'answers' pk=q.pk %}">{{ q.text }}<!--<span class="badge badge-success float-right">{{ q.upvotes }} Upvote{{ q.upvotes | pluralize }}</span>--></a></h5>
 					<h6>
-						<font size="2" color="grey">Asked: {{ q.date_asked }}</font>
+						<font size="2" color="grey">Added: {{ q.date_asked }}</font>
 					</h6>
 					<br>
 				</div>
@@ -58,10 +63,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 </body>
 </html>
