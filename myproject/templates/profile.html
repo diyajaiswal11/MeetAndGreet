@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <style>
 	.xyz{ 
-       width: 80%;
+       width: 16.5%;
        height:100px;
 	   border: 1px solid black;
 	   border-radius: 10px;
@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="topnav">	
-        <h2 style="color:white;margin-left: 1em;"><br>Hello, {{request.user}}!&#128515<h2>	
+        <h2 style="color:white;margin-left: 1em;"><br><br>Hello, {{user.username}}!&#128515<h2>	
                 <div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
 					<a class="login100-form-btn" href="{% url 'home' %}"style="background-color:#C0C0C0;" >
 						Back
@@ -36,5 +36,12 @@
 						</a>
 				</div>
                 <br>
+    </div>
+    <br>
+    
+    <H4 style="color:black;margin-left: 25em;">{{user.profile.date_of_birth}}</H4> 
+    
+
+
 </body>
 </html>
