@@ -25,5 +25,7 @@ urlpatterns = [
     path('',include('questions.urls')),
     path('',views.front,name='front'),
     #path('home1/',views.home1,name='home1'),
-] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+] 
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
     

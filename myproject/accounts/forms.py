@@ -3,7 +3,13 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth import authenticate
+from .models import Profile
 
+class UserProfileForm(ModelForm):
+    class Meta:
+        model= Profile
+        fields='__all__'
+        exclude=['user']
 
 class CreateUserForm(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Password','class':'input100'}))

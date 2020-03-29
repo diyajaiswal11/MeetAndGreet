@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="topnav">	
-        <h2 style="color:white;margin-left: 1em;"><br><br>Hello, {{user.username}}!&#128515<h2>	
+        <h2 style="color:white;margin-left: 1em;"><br><br>Hello, {{ request.user }}!&#128515<h2>	
                 <div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
 					<a class="login100-form-btn" href="{% url 'home' %}"style="background-color:#C0C0C0;" >
 						Back
@@ -38,8 +38,19 @@
                 <br>
     </div>
     <br>
+    <img src="{{ request.user.profile.profilepicture.url }}" style="margin-left: 2em;" width="280px" height="360px">
+    <div style="float:right;width:70%;">
+        <br>
+        <br>
+    <h4>Name - {{request.user.profile.firstname}} {{request.user.profile.lastname}} </h4>
+    <br>
+    <h4>Email - {{request.user.profile.email}}</h4>
+    <br>
+    <h4>Date of Birth - {{request.user.profile.date_of_birth}}</h4>
+    </div>
+    <br>
     
-    <H4 style="color:black;margin-left: 25em;">{{user.profile.date_of_birth}}</H4> 
+    
     
 
 

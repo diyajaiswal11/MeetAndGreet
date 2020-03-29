@@ -1,1 +1,58 @@
-<h1>Hello</h1>
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Edit Profile</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<style>
+	.xyz{ 
+       width: 16.5%;
+       height:100px;
+	   border: 1px solid black;
+	   border-radius: 10px;
+	   padding: 10px;
+	   margin-left: 20px;
+	   margin-bottom: 20px;
+	}
+	.topnav {
+		background: linear-gradient(to bottom, #0250c5, #d43f8d);
+		overflow: hidden;
+	  }
+	</style>
+</head>
+<body>
+    <div class="topnav">	
+        <h2 style="color:white;margin-left: 1em;"><br><br>Hello, {{request.user}}!&#128515<h2>	
+                <div class="container-login100-form-btn p-l-40 p-r-30 p-t-0 p-b-10" style="float:right;width:14%;">
+					<a class="login100-form-btn" href="{% url 'profile' %}"style="background-color:#C0C0C0;" >
+						Back
+						</a>
+                </div>
+                <br>
+    </div>
+</div>
+<form method="POST" action="" enctype="multipart/form-data">
+    <br>
+    {% csrf_token %}
+    <div style="margin-left: 1.5em;">
+        {{ form|crispy }}
+    </div>
+    <div class="container-login100-form-btn p-t-25 p-l-56 p-r-56" style="color:black;width:17%;float:left">
+        <button class="login100-form-btn" type="submit" action="{% url 'profile' %}">
+            Submit
+        </button>
+    </div>
+
+</form>
+</div>
+    <br>
+    
+    
+    
+
+
+</body>
+</html>

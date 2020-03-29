@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)   #on deleting user,profile deleted but not vice versa
-    image=models.ImageField(blank=True,upload_to='profile_pics')
-    date_of_birth = models.DateField(blank=True, null=True)
+    firstname=models.CharField(max_length=200,null=True)
+    lastname=models.CharField(max_length=200,null=True)
+    email=models.CharField(max_length=200,null=True)
+    profilepicture=models.ImageField(upload_to='profile_pics',default='default.jpg')
+    date_of_birth = models.DateField(blank=True, null=True,help_text='Please use the following format: <em>YYYY-MM-DD</em>.')
 
     def __str__(self):
         return f'{self.user.username} Profile'
-    
-    def get_date_of_birth(self):
-        return self.date_of_birth
+
 

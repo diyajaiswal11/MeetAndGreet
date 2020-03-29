@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'questions',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -109,6 +110,9 @@ LANGUAGE_CODE = 'en-us'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+#AUTH_PROFILE_MODULE = 'accounts.Profile'
+
+
 
 TIME_ZONE = 'Asia/Calcutta'
 
@@ -118,7 +122,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
