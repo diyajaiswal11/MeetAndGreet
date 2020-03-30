@@ -8,7 +8,7 @@ class Profile(models.Model):
     lastname=models.CharField(max_length=200,null=True)
     email=models.CharField(max_length=200,null=True)
     profilepicture=models.ImageField(upload_to='profile_pics',default='default.jpg')
-    date_of_birth = models.DateField(blank=True, null=True,help_text='Please use the following format: <em>YYYY-MM-DD</em>.')
+    date_of_birth = models.DateField(null=True,help_text='Please use the following format: <em>YYYY-MM-DD</em>.')
 
     def __str__(self):
         return f'{self.user.username} Profile'

@@ -13,8 +13,8 @@ from .forms import QuestionForm
 
 @login_required(login_url='loginpage')
 def home(request):
-    que=Question.objects.all().order_by('date_asked')
-    context={'que':que}
+    ques=Question.objects.all().order_by('date_asked')
+    context={'ques':ques}
     return render(request,'home.html',context) 
 
 @login_required(login_url='loginpage')
@@ -22,6 +22,8 @@ def answers(request,pk):
     ans=get_object_or_404(Question,pk=pk) 
     context={'ans':ans}
     return render(request,'answers.html',context)
+
+
 
 @login_required(login_url='loginpage')
 def addevent(request):
@@ -32,27 +34,10 @@ def addevent(request):
             que.date_asked=timezone.now()
             que.save()
             return redirect('home') 
+        else:
+            form=QuestionForm() 
     return render(request,'addevent.html',{'form':form })
 
 
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""@login_required(login_url='loginpage')
-def upvotes(request,pk):
-    que=Question.objects.get(pk=request.POST['question']) 
-    que.upvotes+=1 
-    que.save()
-    return render(request,'home.html',{'que':que}) 
-        """

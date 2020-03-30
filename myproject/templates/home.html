@@ -47,15 +47,17 @@
 				<H4 style="color:black;margin-left: 0.6em;font-size:xx-large;">Trending Events:</H4> 
 
 				<br>
-				{% for q in que %}
+				
+				{% for q in ques %}
 				<div class="xyz">
-					<h5>&#10097; <a style="font-size:20px; color:black;" href="{% url 'answers' pk=q.pk %}">{{ q.text }}<!--<span class="badge badge-success float-right">{{ q.upvotes }} Upvote{{ q.upvotes | pluralize }}</span>--></a></h5>
+					<h5>&#10097;{{ q.text }}</a></h5>
 					<h6>
 						<font size="2" color="grey">Added: {{ q.date_asked }}</font>
 					</h6>
 					<br>
 				</div>
 				{% endfor %}
+			
 			<style>a:hover {
 				text-decoration: none;
 			  color: #fff;
