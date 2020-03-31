@@ -17,7 +17,7 @@ from django.urls import path, include
 from . import views
 urlpatterns = [
     path('home/',views.home,name='home'),
-    path('question/<int:pk>/',views.answers,name="answers"),
+    #path('question/<int:pk>/',views.answers,name="answers"),
     path('addevent/',views.addevent,name='addevent'),
-    #path('question/<int:pk>/upvote',views.upvotes,name='upvotes'),
+    #path('question/<int:pk>/',views.addcomment,name='addcomment'),
 ]

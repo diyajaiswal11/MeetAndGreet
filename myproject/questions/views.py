@@ -17,13 +17,22 @@ def home(request):
     context={'ques':ques}
     return render(request,'home.html',context) 
 
+"""
 @login_required(login_url='loginpage')
-def answers(request,pk):
-    ans=get_object_or_404(Question,pk=pk) 
-    context={'ans':ans}
-    return render(request,'answers.html',context)
-
-
+def addcomment(request,pk):
+    event=get_object_or_404(Question,pk=pk) 
+    if request.method=="POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.event= event
+            comment.user = request.user
+            comment.save()
+    else:
+        form=CommentForm()
+    context={'form':form}
+    return render(request,'addcomment.html',context)
+"""
 
 @login_required(login_url='loginpage')
 def addevent(request):
