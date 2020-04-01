@@ -19,5 +19,8 @@ urlpatterns = [
     path('home/',views.home,name='home'),
     #path('question/<int:pk>/',views.answers,name="answers"),
     path('addevent/',views.addevent,name='addevent'),
-    #path('question/<int:pk>/',views.addcomment,name='addcomment'),
+    path('event/<int:pk>/',views.attendevent,name='attendevent'),
+    path('event/<int:pk>/',views.attendevent,name='attendevent'),
+   # path('event/<int:pk>/attend',views.attend_event,name='attend_event'),
+    #path('event/<int:pk>/not_attend',views.not_attend_event,name='not_attend_event'),
 ]
